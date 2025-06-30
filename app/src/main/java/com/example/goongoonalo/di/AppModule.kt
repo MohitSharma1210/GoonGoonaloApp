@@ -20,12 +20,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiService(): ApiService =
-        Retrofit.Builder()
+    fun provideApiService(): ApiService {
+        return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
+    }
 
     @Provides
     @Singleton
